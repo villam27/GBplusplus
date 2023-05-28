@@ -21,7 +21,7 @@ ifeq ($(OS), Windows_NT)
 else
 	SFMLLIB		=	-LSFMLlinux/lib
 	SFMLINC		=	-ISFMLlinux/include
-	CREA_DIR	=	@mkdir -p $(BUILDDIR)
+	CREA_DIR	=	@mkdir -p $(BUILDDIR)/srcs
 	SFMLFLAGS	=	-lsfml-graphics -lsfml-window -lsfml-system
 	RM_DIR		=	rm -rf
 	RM			=	rm -f
