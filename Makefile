@@ -1,4 +1,4 @@
-NAME		=	GBpp.out
+BASENAME	=	GBpp
 VERSION		=	0.0.1
 
 SRCS		=	srcs/main.cpp
@@ -9,9 +9,24 @@ BUILDDIR	=	.build
 OBJS		=	$(SRCS:%.cpp=$(BUILDDIR)/%.o)
 CC			=	g++
 CFLAGS		=	-Wall -Wextra -Werror #-g -fsanitize=address
-SFMLFLAGS	=	-lsfml-graphics -lsfml-window -lsfml-system
-SFMLLIB		=	-LSFMLlinux/lib
-SFMLINC		=	-ISFMLlinux/include
+
+ifeq ($(OS), Windows_NT)
+	SFMLLIB		=	-LSFMLwin/lib
+	SFMLINC		=	-ISFMLwin/include -DSFML_STATIC 
+	CREA_DIR	=	if not exist ".build/srcs" md ".build/srcs"
+	SFMLFLAGS	=	-lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lopengl32 -lfreetype -lwinmm -lgdi32 -mwindows
+	RM_DIR		=	rd /s /q
+	RM			=	del /f
+	NAME		=	$(addprefix $(BASENAME), .exe)
+else
+	SFMLLIB		=	-LSFMLlinux/lib
+	SFMLINC		=	-ISFMLlinux/include
+	CREA_DIR	=	@mkdir -p $(BUILDDIR)/srcs
+	SFMLFLAGS	=	-lsfml-graphics -lsfml-window -lsfml-system
+	RM_DIR		=	rm -rf
+	RM			=	rm -f
+	NAME		=	$(addprefix $(BASENAME), .out)
+endif
 
 all	:	$(NAME)
 
@@ -19,14 +34,14 @@ $(NAME)	:	$(OBJS)
 	$(CC) -o $(NAME) $(CFLAGS) $(OBJS) $(SFMLLIB) $(SFMLFLAGS)
 
 $(BUILDDIR)/%.o	:	%.cpp $(HEADERS)/*.hpp Makefile
-	@mkdir -p $(@D)
+	$(CREA_DIR)
 	$(CC) $(CFLAGS) -I$(HEADERS) $(SFMLINC) -c $< -o $@
 
 clean :
-	-rm -f $(OBJS)
+	-$(RM_DIR) $(BUILDDIR)
 
 fclean : clean
-	-rm -f $(NAME)
+	-$(RM) $(NAME)
 
 re : fclean all
 
