@@ -1,14 +1,20 @@
 BASENAME	=	GBpp
 VERSION		=	0.0.1
 
-SRCS		=	srcs/main.cpp
+SRCS		=	srcs/imgui.cpp \
+				srcs/imgui_demo.cpp \
+				srcs/imgui_draw.cpp \
+				srcs/imgui-SFML.cpp \
+				srcs/imgui_tables.cpp \
+				srcs/imgui_widgets.cpp \
+				srcs/main.cpp
 
 HEADERS		=	includes
 
 BUILDDIR	=	.build
 OBJS		=	$(SRCS:%.cpp=$(BUILDDIR)/%.o)
 CC			=	g++
-CFLAGS		=	-Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS		=	#-Wall -Wextra -Werror #-g -fsanitize=address
 
 ifeq ($(OS), Windows_NT)
 	SFMLLIB		=	-LSFMLwin/lib
@@ -22,7 +28,7 @@ else
 	SFMLLIB		=	-LSFMLlinux/lib
 	SFMLINC		=	-ISFMLlinux/include
 	CREA_DIR	=	@mkdir -p $(BUILDDIR)/srcs
-	SFMLFLAGS	=	-lsfml-graphics -lsfml-window -lsfml-system
+	SFMLFLAGS	=	-lsfml-graphics -lsfml-window -lsfml-system -lGL #-lGLU
 	RM_DIR		=	rm -rf
 	RM			=	rm -f
 	NAME		=	$(addprefix $(BASENAME), .out)
