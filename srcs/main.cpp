@@ -1,11 +1,18 @@
-#include "imgui.h"
-#include "imgui-SFML.h"
+#include <App.hpp>
+#include <DebugWindow.hpp>
 
-#include <SFML/Graphics/CircleShape.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/System/Clock.hpp>
-#include <SFML/Window/Event.hpp>
+int main(void)
+{
+    App app;
+    DebugWindow window;
 
+    app.run();
+    while (window.isOpen()) {
+        window.run();
+    }
+}
+
+/*
 int main() {
     sf::RenderWindow window(sf::VideoMode(640, 480), "ImGui + SFML = <3");
     window.setFramerateLimit(60);
@@ -43,3 +50,4 @@ int main() {
 
     return 0;
 }
+*/

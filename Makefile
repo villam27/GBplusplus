@@ -7,6 +7,8 @@ SRCS		=	srcs/imgui.cpp \
 				srcs/imgui-SFML.cpp \
 				srcs/imgui_tables.cpp \
 				srcs/imgui_widgets.cpp \
+				srcs/App.cpp \
+				srcs/DebugWindow.cpp \
 				srcs/main.cpp
 
 HEADERS		=	includes
