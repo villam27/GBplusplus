@@ -14,7 +14,7 @@ HEADERS		=	includes
 BUILDDIR	=	.build
 OBJS		=	$(SRCS:%.cpp=$(BUILDDIR)/%.o)
 CC			=	g++
-CFLAGS		=	#-Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror #-g -fsanitize=address
 
 ifeq ($(OS), Windows_NT)
 	SFMLLIB		=	-LSFMLwin/lib
@@ -28,7 +28,7 @@ else
 	SFMLLIB		=	-LSFMLlinux/lib
 	SFMLINC		=	-ISFMLlinux/include
 	CREA_DIR	=	@mkdir -p $(BUILDDIR)/srcs
-	SFMLFLAGS	=	-lsfml-graphics -lsfml-window -lsfml-system -lGL #-lGLU
+	SFMLFLAGS	=	-lsfml-graphics -lsfml-window -lsfml-system -lGL
 	RM_DIR		=	rm -rf
 	RM			=	rm -f
 	NAME		=	$(addprefix $(BASENAME), .out)

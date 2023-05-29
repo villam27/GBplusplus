@@ -62,11 +62,11 @@ In Utf<8>::decode(In begin, In end, Uint32& output, Uint32 replacement)
         output = 0;
         switch (trailingBytes)
         {
-            case 5: output += static_cast<Uint8>(*begin++); output <<= 6;
-            case 4: output += static_cast<Uint8>(*begin++); output <<= 6;
-            case 3: output += static_cast<Uint8>(*begin++); output <<= 6;
-            case 2: output += static_cast<Uint8>(*begin++); output <<= 6;
-            case 1: output += static_cast<Uint8>(*begin++); output <<= 6;
+            case 5: output += static_cast<Uint8>(*begin++); output <<= 6; [[fallthrough]];
+            case 4: output += static_cast<Uint8>(*begin++); output <<= 6; [[fallthrough]];
+            case 3: output += static_cast<Uint8>(*begin++); output <<= 6; [[fallthrough]];
+            case 2: output += static_cast<Uint8>(*begin++); output <<= 6; [[fallthrough]];
+            case 1: output += static_cast<Uint8>(*begin++); output <<= 6; [[fallthrough]];
             case 0: output += static_cast<Uint8>(*begin++);
         }
         output -= offsets[trailingBytes];
