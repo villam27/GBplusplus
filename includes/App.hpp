@@ -3,12 +3,7 @@
 
 #include <string>
 #include <iostream>
-#include <SFML/Graphics/CircleShape.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/System/Clock.hpp>
-#include <SFML/Window/Event.hpp>
-#include "imgui.h"
-#include "imgui-SFML.h"
+#include <DebugWindow.hpp>
 
 class App
 {
@@ -21,6 +16,7 @@ class App
         void    run();
 
     private:
+        DebugWindow _debug_win;
         std::string _rom_name;
         int         _mode;
 };

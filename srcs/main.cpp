@@ -4,12 +4,8 @@
 int main(void)
 {
     App app;
-    DebugWindow window;
 
     app.run();
-    while (window.isOpen()) {
-        window.run();
-    }
 }
 
 /*
