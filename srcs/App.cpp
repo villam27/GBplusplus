@@ -23,9 +23,9 @@ App::~App()
 void    App::run()
 {
     std::cout << "Run" << std::endl;
-    while (_debug_win.isOpen())
+    while (_debug_win.isOpen() && _game_win.isOpen())
     {
         _debug_win.run();
-    }
-    
+        _game_win.run();
+    }   
 }

@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <DebugWindow.hpp>
+#include <GameWindow.hpp>
 
 class App
 {
@@ -17,6 +18,7 @@ class App
 
     private:
         DebugWindow _debug_win;
+        GameWindow  _game_win;
         std::string _rom_name;
         int         _mode;
 };

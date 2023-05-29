@@ -8,6 +8,10 @@ DebugWindow::DebugWindow()
     ImGui::SFML::Init(*this, true);
 }
 
+DebugWindow::~DebugWindow()
+{
+}
+
 void    DebugWindow::setGameScreen(sf::RenderTexture *game_screen)
 {
     _game_screen = game_screen;
