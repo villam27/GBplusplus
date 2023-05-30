@@ -11,7 +11,7 @@ GameWindow::~GameWindow()
 {
 }
 
-void    GameWindow::setGameScreen(sf::RenderTexture *game_screen)
+void    GameWindow::setGameScreen(GameScreen *game_screen)
 {
     _game_screen = game_screen;
 }
@@ -24,5 +24,7 @@ void    GameWindow::run(void)
             close();
     }
     clear();
+    //sf::Sprite  sp((*_game_screen).getTexture());
+    draw(_game_screen->getSprite());
     display();
 }

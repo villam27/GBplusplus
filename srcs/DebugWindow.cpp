@@ -29,7 +29,9 @@ void    DebugWindow::run(void)
     ImGui::SFML::Update(*this, _delta_clock.restart());
     ImGui::ShowDemoWindow();
     ImGui::Begin("Hello, world!");
-    ImGui::Button("Look at this pretty button");
+    ImGui::Image(*_game_screen);
+    if (ImGui::Button("meow"))
+        std::cout << "purr" << std::endl;
     ImGui::End();
     clear();
     ImGui::SFML::Render(*this);

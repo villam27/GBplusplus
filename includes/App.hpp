@@ -5,6 +5,8 @@
 #include <iostream>
 #include <DebugWindow.hpp>
 #include <GameWindow.hpp>
+#include <GameScreen.hpp>
+#include <SFML/Graphics/CircleShape.hpp>
 
 class App
 {
@@ -17,10 +19,12 @@ class App
         void    run();
 
     private:
-        DebugWindow _debug_win;
-        GameWindow  _game_win;
-        std::string _rom_name;
-        int         _mode;
+        DebugWindow         _debug_win;
+        GameWindow          _game_win;
+        GameScreen         _game_screen;
+        sf::CircleShape     _circle;
+        std::string         _rom_name;
+        int                 _mode;
 };
 
 #endif  //APP_HPP

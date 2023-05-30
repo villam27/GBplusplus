@@ -5,6 +5,7 @@
 #include <SFML/Graphics/RenderTexture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/System/Clock.hpp>
+#include <GameScreen.hpp>
 #include <SFML/Window/Event.hpp>
 
 #define GAME_WIN_W         800
@@ -17,12 +18,12 @@ class GameWindow : public sf::RenderWindow
         GameWindow();
         ~GameWindow();
     
-        void    setGameScreen(sf::RenderTexture *game_screen);
+        void    setGameScreen(GameScreen *game_screen);
         void    run(void);
 
     private:
         sf::Event           _event;
-        sf::RenderTexture   *_game_screen;
+        GameScreen          *_game_screen;
 };
 
 #endif  //GAME_WIN

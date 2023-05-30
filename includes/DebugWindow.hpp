@@ -8,6 +8,7 @@
 #include <SFML/Window/Event.hpp>
 #include <imgui.h>
 #include <imgui-SFML.h>
+#include <iostream>
 
 #define DEBUG_WIN_W         800
 #define DEBUG_WIN_H         600
