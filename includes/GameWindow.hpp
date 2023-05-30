@@ -19,6 +19,7 @@ class GameWindow : public sf::RenderWindow
         ~GameWindow();
     
         void    setGameScreen(GameScreen *game_screen);
+        void    reOpen(int scale);
         void    run(void);
 
     private:

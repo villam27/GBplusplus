@@ -21,7 +21,7 @@ class App
     private:
         DebugWindow         _debug_win;
         GameWindow          _game_win;
-        GameScreen         _game_screen;
+        GameScreen          _game_screen;
         sf::CircleShape     _circle;
         std::string         _rom_name;
         int                 _mode;

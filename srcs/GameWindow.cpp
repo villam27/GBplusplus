@@ -1,8 +1,8 @@
 #include <GameWindow.hpp>
 
 GameWindow::GameWindow()
-    : RenderWindow(sf::VideoMode(GAME_WIN_W, GAME_WIN_H),
-                                "GBpp")
+    : RenderWindow(sf::VideoMode(RESOLUTION_W, RESOLUTION_H),
+                                "GBpp", sf::Style::Close)
 {
     setFramerateLimit(GAME_WIN_FRAMERATE);
 }
@@ -16,15 +16,24 @@ void    GameWindow::setGameScreen(GameScreen *game_screen)
     _game_screen = game_screen;
 }
 
+void    GameWindow::reOpen(int scale)
+{
+    if (!isOpen())
+        create(sf::VideoMode(RESOLUTION_W, RESOLUTION_H), "GBpp", sf::Style::Close);
+    setSize(sf::Vector2u(RESOLUTION_W * scale, RESOLUTION_H * scale));       
+}
+
 void    GameWindow::run(void)
 {
-    while (pollEvent(_event))
+    if (isOpen())
     {
-        if (_event.type == sf::Event::Closed)
-            close();
+        while (pollEvent(_event))
+        {
+            if (_event.type == sf::Event::Closed)
+                close();
+        }
+        clear();
+        draw(_game_screen->getSprite());
+        display();
     }
-    clear();
-    //sf::Sprite  sp((*_game_screen).getTexture());
-    draw(_game_screen->getSprite());
-    display();
 }

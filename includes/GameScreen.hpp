@@ -18,6 +18,7 @@ class GameScreen : public sf::RenderTexture
         sf::Sprite  &getSprite(void);
         void        setData(char screen_date[SCREEN_PX]);
         void        setScale(unsigned scale);
+
     private:
         sf::Sprite  _screen_sprite;
         unsigned    _scale;
