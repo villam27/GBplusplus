@@ -3,7 +3,21 @@
 
 int main(void)
 {
-    App app;
+    std::ifstream   rom_file;
+    uint8_t         ram[8192];
+
+    memset(ram, 0, 8190);
+    rom_file.open("roms/acid2.gbc", std::ios::in | std::ios::binary);
+    rom_file.read((char *)ram, 8192);
+    for (int i = 0; i < 8192; i++)
+    {
+        if (ram[i] == 0)
+            printf("0x%X ", ram[i]);
+        else
+            printf("\033[1;31m0x%X\033[0m ", ram[i]);
+    }
+    std::cout << std::endl;
+    App app("roms/acid2.gbc");
 
     app.run();
 }

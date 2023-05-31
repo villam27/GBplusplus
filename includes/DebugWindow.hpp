@@ -5,12 +5,14 @@
 #include <imgui.h>
 #include <imgui-SFML.h>
 #include <iostream>
+#include <imgui_memory_editor.h>
 
 #define DEBUG_WIN_W         800
 #define DEBUG_WIN_H         600
 #define DEBUG_WIN_FRAMERATE 60
 #define MIN_SCALE           1
 #define MAX_SCALE           5
+#define	TOTAL_RAM	        8190
 
 class DebugWindow : public sf::RenderWindow
 {
@@ -20,6 +22,7 @@ class DebugWindow : public sf::RenderWindow
 
         void    setGameScreen(GameScreen *game_screen);
         void    setGameWindow(GameWindow *game_window);
+        void    setRamAddr(u_int8_t *_ram_ptr);
         void    run(void);
 
     private:
@@ -27,6 +30,7 @@ class DebugWindow : public sf::RenderWindow
         sf::Clock           _delta_clock;
         GameWindow          *_game_win;
         GameScreen          *_game_screen;
+        uint8_t             *_ram_ptr;
 
         int                 _scale;
 
