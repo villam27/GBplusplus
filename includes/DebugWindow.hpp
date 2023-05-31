@@ -12,7 +12,7 @@
 #define DEBUG_WIN_FRAMERATE 60
 #define MIN_SCALE           1
 #define MAX_SCALE           5
-#define	TOTAL_RAM	        8190
+#define	TOTAL_RAM	        0xFFFF //65535
 
 class DebugWindow : public sf::RenderWindow
 {
