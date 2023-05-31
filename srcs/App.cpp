@@ -2,7 +2,6 @@
 
 App::App() : _mode(0)
 {
-    //_game_screen.setScale(3);
     memset(_ram, 0, TOTAL_RAM);
     _circle.setRadius(10);
     _circle.setFillColor(sf::Color::Blue);

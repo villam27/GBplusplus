@@ -5,8 +5,8 @@
 #include <SFML/Graphics/RenderTexture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/System/Clock.hpp>
-#include <GameScreen.hpp>
 #include <SFML/Window/Event.hpp>
+#include <GameScreen.hpp>
 
 #define GAME_WIN_W         800
 #define GAME_WIN_H         600
