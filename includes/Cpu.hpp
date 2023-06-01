@@ -2,8 +2,8 @@
 #define	CPU_HPP
 
 #include <stdint.h>
+#include <defines.hpp>
 
-#define	TO_16BIT(R1, R2)	(((uint16_t)R1 << 8) | ((uint16_t)R2))
 #define	GET_FF(VALUE)		(uint8_t)(((VALUE) & 0xFF00) >> 8)
 #define	GET_00FF(VALUE)		(uint8_t)(((VALUE) & 0xFF))
 

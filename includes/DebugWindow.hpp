@@ -4,15 +4,14 @@
 #include <GameWindow.hpp>
 #include <imgui.h>
 #include <imgui-SFML.h>
-#include <iostream>
 #include <imgui_memory_editor.h>
+#include <Ram.hpp>
 
 #define DEBUG_WIN_W         800
 #define DEBUG_WIN_H         600
 #define DEBUG_WIN_FRAMERATE 60
 #define MIN_SCALE           1
 #define MAX_SCALE           5
-#define	TOTAL_RAM	        0xFFFF //65535
 
 class DebugWindow : public sf::RenderWindow
 {

@@ -2,12 +2,11 @@
 #define APP_HPP
 
 #include <string>
-#include <iostream>
 #include <DebugWindow.hpp>
 #include <GameWindow.hpp>
 #include <GameScreen.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
-#include <fstream>
+#include <Ram.hpp>
 
 class App
 {
@@ -28,7 +27,8 @@ class App
 		int                 _mode;
 
 		std::ifstream       _rom_file;
-		uint8_t             _ram[TOTAL_RAM];
+		//uint8_t             _ram[TOTAL_RAM];
+		Ram					_ram;
 };
 
 #endif  //APP_HPP
