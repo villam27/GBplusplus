@@ -12,6 +12,7 @@ SRCS		=	srcs/imgui.cpp \
 				srcs/GameWindow.cpp \
 				srcs/GameScreen.cpp \
 				srcs/Cpu.cpp \
+				srcs/Ram.cpp \
 				srcs/main.cpp
 
 HEADERS		=	includes
