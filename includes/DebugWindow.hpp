@@ -23,6 +23,7 @@ class DebugWindow : public sf::RenderWindow
         void    setGameWindow(GameWindow *game_window);
         void    setRamAddr(u_int8_t *_ram_ptr);
         void    run(void);
+        sf::RenderTexture *_tiles;
 
     private:
         sf::Event           _event;

@@ -7,11 +7,12 @@ Ram::Ram(void)
 {
 	memset(_ram, 0, TOTAL_RAM);
 	_rect.setSize(sf::Vector2f(1, 1));
+	_tiles.create(144, 144);
+	_tiles.clear();
 }
 
 Ram::~Ram(void)
 {
-
 }
 
 void	Ram::loadData(std::ifstream &file)
@@ -27,37 +28,57 @@ uint8_t	*Ram::getData(const uint16_t &start_addr)
 
 void	Ram::loadTiles(void)
 {
-	size_t		i = VRAM_B1_SART;
+	size_t		i = VRAM_START;
 	uint16_t	tmp = 0;
+	size_t		x_off = 0;
+	size_t		y_off = 0;
 
-	while (i < VRAM_B1_END)
+	while (i < VRAM_END)
 	{
 		int	j = 0;
 		while (j < 8)
 		{
-			//sf::RenderTexture	tmp_tex;
-			//tmp_tex.create(8, 8);
-			tmp = 0;
-			tmp = TO_16BIT(_ram[i], _ram[i + 1]);
-			//int	k = 0;
-			while (tmp)
+			int	k = 0;
+			uint8_t	t1 = _ram[i];
+			uint8_t	t2 = _ram[i + 1];
+			printf("%X %X ", _ram[i], _ram[i + 1]);
+			//printf("%X ", tmp);
+			while (k < 8)
 			{
-				int px = (tmp & 0xC000) >> 14;
+				//int px = (tmp & 0xC000) >> 14;
+				uint8_t	px = ((t1 & 0x80) >> 6);
+				px += (t2 >> 7);
+				//printf ("%d\n", px);
 				if (px == 1)
-					printf("\e[0;44m  ");
+					_rect.setFillColor(sf::Color(C01));
 				else if (px == 2)
-					printf("\e[0;104m  ");
+					_rect.setFillColor(sf::Color(C10));
 				else if (px == 3)
-					printf("\e[0;46m  ");
-				else
-					printf("\e[0;106m  ");
+					_rect.setFillColor(sf::Color(C11));
+				else if (px == 0)
+					_rect.setFillColor(sf::Color(C00));
 				tmp <<= 2;
-				printf("\e[0m");
+				t1 <<= 1;
+				t2 <<= 1;
+				_rect.setPosition(k + x_off, j + y_off);
+				//std::cout << _rect.getFillColor().toInteger() << " " 
+				//		<< _rect.getPosition().x << " "
+				//		<< _rect.getPosition().y << std::endl;
+				_tiles.draw(_rect);
+				k++;
 			}
 			j++;
 			i += 2;
-			printf("\n");
 		}
-		printf("===\n");
+		printf("\n");
+		x_off += 9;
+		if (x_off >= 128)
+		{
+			x_off = 0;
+			y_off += 9;
+		}
+		//sf::Sprite	sp = sf::Sprite(_tiles[i - VRAM_B1_SART].getTexture());
+		//sp.scale(10, 10);
 	}
+	_tiles.display();
 }

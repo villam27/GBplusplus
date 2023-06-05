@@ -20,7 +20,7 @@ HEADERS		=	includes
 BUILDDIR	=	.build
 OBJS		=	$(SRCS:%.cpp=$(BUILDDIR)/%.o)
 CC			=	g++
-CFLAGS		=	-Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 
 ifeq ($(OS), Windows_NT)
 	SFMLLIB		=	-LSFMLwin/lib

@@ -23,6 +23,8 @@ App::App(const std::string &rom_name) : _rom_name(rom_name), _mode(0)
     _debug_win.setGameScreen(&_game_screen);
     _debug_win.setGameWindow(&_game_win);
     _debug_win.setRamAddr(_ram.getData(0));
+    _debug_win._tiles = &_ram._tiles;
+    _rom_file.close();
 }
 
 App::App(const std::string &rom_name, const int mode) : _rom_name(rom_name), _mode(mode)
@@ -32,7 +34,6 @@ App::App(const std::string &rom_name, const int mode) : _rom_name(rom_name), _mo
 
 App::~App()
 {
-    _rom_file.close();
 }
 
 void    App::run()

@@ -40,6 +40,10 @@ void    DebugWindow::run(void)
     ImGui::SFML::Update(*this, _delta_clock.restart());
     showGameWindow();
     clear();    
+    sf::Sprite  s(_tiles->getTexture());
+    s.scale(5, 5);
+    s.setPosition(0,0);
+    draw(s);
     ImGui::SFML::Render(*this);
     display();
 }
@@ -48,7 +52,7 @@ void    DebugWindow::showGameWindow(void)
 {
     static MemoryEditor mem_editor;
 
-    ImGui::SetNextWindowPos(ImVec2(0, 0));
+    /*ImGui::SetNextWindowPos(ImVec2(100, 0));
     ImGui::Begin("Game", NULL, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_MenuBar);
     ImGui::BeginMenuBar();
     if (ImGui::BeginMenu("File"))
@@ -64,5 +68,12 @@ void    DebugWindow::showGameWindow(void)
     if (ImGui::SliderInt("Game window Scale", &_scale, MIN_SCALE, MAX_SCALE))
         _game_win->setSize(sf::Vector2u(RESOLUTION_W * _scale, RESOLUTION_H * _scale));
     ImGui::End();
+    ImGui::Begin("tiles");
+    //sf::Texture t();
+    sf::Sprite  s(_tiles->getTexture());
+    s.setRotation(80);
+    s.scale(3, 3);
+    ImGui::Image(s);
+    ImGui::End();*/
     mem_editor.DrawWindow("Ram", _ram_ptr, TOTAL_RAM);
 }
